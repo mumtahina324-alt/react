@@ -1,9 +1,9 @@
-import EditableTravelSnacks from "./components/EditableTravelSnacks";
+import TravelPlan from "./components/TravelPlan";
 
 export default function App() {
   return (
-    <div>
-      <EditableTravelSnacks />
+    <div className="container mx-auto">
+      <TravelPlan />
     </div>
   );
 }
