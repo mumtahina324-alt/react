@@ -1,20 +1,23 @@
 import { useState } from "react";
-import { initialTravelPlan } from "../data/data";
+import { normalizedTravelPlan } from "../data/normalized-data.js";
 import TravelTree from "./TravelTree";
 export default function TravelPlan() {
-  // accha data gulo k render korar jonno amader sorbo prothom data gulo k import kore ekta state a rakhte hobe
-  const [plans, setPlans] = useState(initialTravelPlan);
+  const [plans, setPlans] = useState(normalizedTravelPlan);
 
-  const places = plans.childPlaces;
+  // age eitai chilo root object
+  // const places = plans.childPlaces;
+  const root = plans[0];
 
-  // akhn ekhane plans mane ki ei puro data object ta
-  // akhn amra map kore jei part ta render kori sob somoi sei part ta k alada component a rakha better
+  // akhn places ta derived hobe id wise
+  // accha amra muloto root level ei derived korechi ei jonno kebol root data k dekhacche
+  // accha ekhane amra id ta k Traveltree component a pass korechi & PlacebyId hishabe puro plans data kei pass korechi jate derived ta amra Traveltree te korte pari, jeita root a kore amra dekhechilam kebol root ar data e render korchilo
+  const placeIds = root.childIds;
   return (
     <div>
       <h1 className="text-3xl font-bold">Places to visit</h1>
       <ol>
-        {places.map((place) => (
-          <TravelTree key={place.id} places={place} />
+        {placeIds.map((id) => (
+          <TravelTree key={id} id={id} placeById={plans} />
         ))}
       </ol>
     </div>
