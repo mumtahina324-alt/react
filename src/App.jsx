@@ -1,9 +1,9 @@
-import TravelSnacks from "./components/TravelSnacks";
+import EditableTravelSnacks from "./components/EditableTravelSnacks";
 
 export default function App() {
   return (
     <div>
-      <TravelSnacks />
+      <EditableTravelSnacks />
     </div>
   );
 }
